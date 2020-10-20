@@ -23,6 +23,10 @@ int disparoD (int, int, int, int);
 //sale, velocidad y angulo para impactar en el disparo ofensivo.
 int disparodefensivo(int, int, int, int, int, int, int);
 
+//entra, tiempo, velocidad y angulo del disparo ofensivo,
+//sale, velocidad y angulo para impactar en el disparo ofensivo con la restrccion de no impactar al ofensivo.
+int disparodefensivo_restriccion(int, int, int, int, int, int, int);
+
 
 float *angulo1P, *angulo2P, *angulo3P;
 float *xP, *yP, *anguloD;
@@ -68,6 +72,7 @@ int main()
     tO3 = disparoO(d, angulo3, Ho, Hd);
     vOx3 =  *vOxp;
     vOy3 = *vOyp;
+    cout<<"punto1 canon ofensivo dispara."<<endl;
 
     cout << "1. (angulo 45) tiempo: "<<tO1<<" velocidad en x: "<<vOx1<<" velocidad en y: "<<vOy1<<endl;
     cout << "2. (angulo 40) tiempo: "<<tO2<<" velocidad en x: "<<vOx2<<" velocidad en y: "<<vOy2<<endl;
@@ -115,13 +120,13 @@ int main()
     cout << "si la salida es 0 es porque no colisiona."<<endl;
 
     cout <<"Para disparo de 40 grados para parar la bala ofensiva: "<<endl;
-    tempdefense1 = disparodefensivo(tO1,   vOx1,  vOy1, angulo1, d,  Ho, Hd);
+    tempdefense1 = disparodefensivo(tO1,   vOx2,  vOy2, angulo1, d,  Ho, Hd);
     veldefensax1 = *velocidadpx;
     veldefensay1 = *velocidadpy;
-    tempdefense2 = disparodefensivo(tO1,   vOx1,  vOy1, angulo2, d,  Ho, Hd);
+    tempdefense2 = disparodefensivo(tO1,   vOx2,  vOy2, angulo2, d,  Ho, Hd);
     veldefensax2 = *velocidadpx;
     veldefensay2 = *velocidadpy;
-    tempdefense3 = disparodefensivo(tO1,   vOx1,  vOy1, angulo3, d,  Ho, Hd);
+    tempdefense3 = disparodefensivo(tO1,   vOx2,  vOy2, angulo3, d,  Ho, Hd);
     veldefensax3 = *velocidadpx;
     veldefensay3 = *velocidadpy;
     cout << "1. (angulo 45) tiempo: "<<tempdefense1<<" velocidad en x: "<<veldefensax1<<" velocidad en y: "<<veldefensay1<<endl;
@@ -130,19 +135,69 @@ int main()
     cout << "si la salida es 0 es porque no colisiona."<<endl;
 
     cout <<"Para disparo de 35 grados para parar la bala ofensiva: "<<endl;
-    tempdefense1 = disparodefensivo(tO1,   vOx1,  vOy1, angulo1, d,  Ho, Hd);
+    tempdefense1 = disparodefensivo(tO1,   vOx3,  vOy3, angulo1, d,  Ho, Hd);
     veldefensax1 = *velocidadpx;
     veldefensay1 = *velocidadpy;
-    tempdefense2 = disparodefensivo(tO1,   vOx1,  vOy1, angulo2, d,  Ho, Hd);
+    tempdefense2 = disparodefensivo(tO1,   vOx3,  vOy3, angulo2, d,  Ho, Hd);
     veldefensax2 = *velocidadpx;
     veldefensay2 = *velocidadpy;
-    tempdefense3 = disparodefensivo(tO1,   vOx1,  vOy1, angulo3, d,  Ho, Hd);
+    tempdefense3 = disparodefensivo(tO1,   vOx3,  vOy3, angulo3, d,  Ho, Hd);
     veldefensax3 = *velocidadpx;
     veldefensay3 = *velocidadpy;
     cout << "1. (angulo 45) tiempo: "<<tempdefense1<<" velocidad en x: "<<veldefensax1<<" velocidad en y: "<<veldefensay1<<endl;
     cout << "2. (angulo 40) tiempo: "<<tempdefense2<<" velocidad en x: "<<veldefensax2<<" velocidad en y: "<<veldefensay2<<endl;
     cout << "3. (angulo 35) tiempo: "<<tempdefense3<<" velocidad en x: "<<veldefensax3<<" velocidad en y: "<<veldefensay3<<endl;
     cout << "si la salida es 0 es porque no colisiona."<<endl;
+
+    cout<<""<<endl;
+    cout<<"punto4 por cada disparo ofensivo generar al menos 3 disparos defensivos sin dañar el ofensivo"<<endl;
+
+    cout <<""<<endl;
+    cout <<"Para disparo de 45 grados para parar la bala ofensiva: "<<endl;
+    tempdefense1 = disparodefensivo_restriccion(tO1,   vOx1,  vOy1, angulo1, d,  Ho, Hd);
+    veldefensax1 = *velocidadpx;
+    veldefensay1 = *velocidadpy;
+    tempdefense2 = disparodefensivo_restriccion(tO1,   vOx1,  vOy1, angulo2, d,  Ho, Hd);
+    veldefensax2 = *velocidadpx;
+    veldefensay2 = *velocidadpy;
+    tempdefense3 =disparodefensivo_restriccion(tO1,   vOx1,  vOy1, angulo3, d,  Ho, Hd);
+    veldefensax3 = *velocidadpx;
+    veldefensay3 = *velocidadpy;
+    cout << "1. (angulo 45) tiempo: "<<tempdefense1<<" velocidad en x: "<<veldefensax1<<" velocidad en y: "<<veldefensay1<<endl;
+    cout << "2. (angulo 40) tiempo: "<<tempdefense2<<" velocidad en x: "<<veldefensax2<<" velocidad en y: "<<veldefensay2<<endl;
+    cout << "3. (angulo 35) tiempo: "<<tempdefense3<<" velocidad en x: "<<veldefensax3<<" velocidad en y: "<<veldefensay3<<endl;
+    cout << "si la salida es 0 es porque no colisiona."<<endl;
+    cout <<"Para disparo de 40 grados para parar la bala ofensiva: "<<endl;
+    tempdefense1 = disparodefensivo_restriccion(tO1,   vOx2,  vOy2, angulo1, d,  Ho, Hd);
+    veldefensax1 = *velocidadpx;
+    veldefensay1 = *velocidadpy;
+    tempdefense2 = disparodefensivo_restriccion(tO1,   vOx2,  vOy2, angulo2, d,  Ho, Hd);
+    veldefensax2 = *velocidadpx;
+    veldefensay2 = *velocidadpy;
+    tempdefense3 =disparodefensivo_restriccion(tO1,   vOx2,  vOy2, angulo3, d,  Ho, Hd);
+    veldefensax3 = *velocidadpx;
+    veldefensay3 = *velocidadpy;
+    cout << "1. (angulo 45) tiempo: "<<tempdefense1<<" velocidad en x: "<<veldefensax1<<" velocidad en y: "<<veldefensay1<<endl;
+    cout << "2. (angulo 40) tiempo: "<<tempdefense2<<" velocidad en x: "<<veldefensax2<<" velocidad en y: "<<veldefensay2<<endl;
+    cout << "3. (angulo 35) tiempo: "<<tempdefense3<<" velocidad en x: "<<veldefensax3<<" velocidad en y: "<<veldefensay3<<endl;
+    cout << "si la salida es 0 es porque no colisiona."<<endl;
+
+    tempdefense1 = disparodefensivo_restriccion(tO1,   vOx3,  vOy3, angulo1, d,  Ho, Hd);
+    veldefensax1 = *velocidadpx;
+    veldefensay1 = *velocidadpy;
+    tempdefense2 = disparodefensivo_restriccion(tO1,   vOx3,  vOy3, angulo2, d,  Ho, Hd);
+    veldefensax2 = *velocidadpx;
+    veldefensay2 = *velocidadpy;
+    tempdefense3 =disparodefensivo_restriccion(tO1,   vOx3,  vOy3, angulo3, d,  Ho, Hd);
+    veldefensax3 = *velocidadpx;
+    veldefensay3 = *velocidadpy;
+    cout << "1. (angulo 45) tiempo: "<<tempdefense1<<" velocidad en x: "<<veldefensax1<<" velocidad en y: "<<veldefensay1<<endl;
+    cout << "2. (angulo 40) tiempo: "<<tempdefense2<<" velocidad en x: "<<veldefensax2<<" velocidad en y: "<<veldefensay2<<endl;
+    cout << "3. (angulo 35) tiempo: "<<tempdefense3<<" velocidad en x: "<<veldefensax3<<" velocidad en y: "<<veldefensay3<<endl;
+    cout << "si la salida es 0 es porque no colisiona."<<endl;
+
+
+
     return 0;
 }
 
@@ -159,13 +214,13 @@ int disparoO (int distancia, int angulo, int Ho, int Hd){
     for(int vO = 0; vO<=100; vO+=5){
         vOx =vO*cos(aO);
         vOy =vO*sin(aO);
-        for (int t = 0; t<=100; t++){//
+        for (int t = 0; t<=1000; t++){//
             posOx = vOx*t;
             posOy =( Ho + vOy*t) - (0.5*g*(t*t));
             if(sqrt(pow(distancia-posOx,2)+pow(Hd-posOy,2))<=dO){ // defensivo en x = d defensivo en y = h (altura)
                  tiempo = t;
                  vOxp = &vOx;
-                 vOyp = &vOy;
+                 vOyp = &vOy;// (X1-X2)**2 + (Y1-Y2)**2
                  flag = true;
                  return tiempo;
                  break;
@@ -193,7 +248,7 @@ int disparoD (int distancia, int angulo, int Ho, int Hd){
     for(int vO = 0; vO<=100; vO+=5){
         vOx =vO*cos(aO);
         vOy =vO*sin(aO);
-        for (int t = 0; t<=100; t++){//
+        for (int t = 0; t<=1000; t++){//
             posOx = vOx*t;
             posOy =( Hd + vOy*t) - (0.5*g*(t*t));
             if(sqrt(pow(distancia-posOx,2)+pow(Ho-posOy,2))<=dO){ // defensivo en x = d defensivo en y = h (altura)
@@ -250,6 +305,43 @@ int disparodefensivo(int temp, int velocidadx, int velocidady, int angulo, int d
     return tiempo;
  }
 
+//entra, tiempo, velocidad y angulo del disparo ofensivo,
+//sale, velocidad y angulo para impactar en el disparo ofensivo con la restrccion de no impactar al ofensivo.
+int disparodefensivo_restriccion(int temp, int velocidadx, int velocidady, int angulo, int distancia, int Ho, int Hd){
+    float posOx, posOy, posDx, posDy;
+    float pi = 3.1416, g = 9.81, dO = 0.05*distancia ;
+    float aO = angulo * pi/180;
+    int cero =0, vDx, vDy;
+    float tiempo=0;
+    bool flag = false;
+    for(int vD = 0; vD<=100; vD+=5){
+        vDx =vD*cos(aO);
+        vDy =vD*sin(aO);
+        for (float t = 2.5; t<=temp; t += 0.5){
+            posDx = vDx*t;
+            posDy = ( Hd + vDy*t) - (0.5*g*(t*t));
+            posOx = velocidadx*t;
+            posOy =( Ho + velocidady*t) - (0.5*g*(t*t));
+            if(sqrt(pow(distancia-posOx,2)+pow(Ho-posOy,2)) >=dO){
+                if(sqrt(pow(posOx-posDy,2)+pow(posOy-posDy,2))<=dO){ // defensivo en x = d defensivo en y = h (altura)
+                     tiempo = t;
+                     velocidadpx = &vDx;
+                     velocidadpy = &vDy;
+                     flag = true;
+                     return tiempo;
+                     break;
+                }
+             }
+          }
+      }
+
+    if (flag == false){
+        tiempo = 0;
+        velocidadpx = &cero;
+        velocidadpy = &cero;
+    }
+    return tiempo;
+}
 
 
 
