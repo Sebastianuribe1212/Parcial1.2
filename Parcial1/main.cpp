@@ -21,12 +21,12 @@ int disparoD (int, int, int, int);
 
 //entra, tiempo, velocidad y angulo del disparo ofensivo,
 //sale, velocidad y angulo para impactar en el disparo ofensivo.
-int disparodefensivo(int, int, int);
+int disparodefensivo(int, int, int, int, int, int, int);
 
 
 float *angulo1P, *angulo2P, *angulo3P;
 float *xP, *yP, *anguloD;
-int *vOxp, *vOyp,*vDxp, *vDyp;
+int *vOxp, *vOyp,*vDxp, *vDyp, *velocidadpx, *velocidadpy ;
 int main()
 {
     int Ho, Hd;
@@ -38,6 +38,8 @@ int main()
     int vDx1, vDy1,  vDx2, vDy2, vDx3, vDy3;
     int tD1 , tD2 , tD3;
 
+    int veldefensax1, veldefensay1, veldefensax2, veldefensay2, veldefensax3, veldefensay3 ;
+    int tempdefense1, tempdefense2, tempdefense3;
 
     int d;
 
@@ -93,7 +95,54 @@ int main()
     cout << "3. (angulo 35) tiempo: "<<tD3<<" velocidad en x: "<<vDx3<<" velocidad en y: "<<vDy3<<endl;
     cout << "si la salida es 0 es porque no colisiona."<<endl;
 
+    cout<<""<<endl;
+    cout<<"punto3 por cada disparo ofensivo generar al menos 3 disparos defensivos"<<endl;
 
+    cout <<""<<endl;
+    cout <<"Para disparo de 45 grados para parar la bala ofensiva: "<<endl;
+    tempdefense1 = disparodefensivo(tO1,   vOx1,  vOy1, angulo1, d,  Ho, Hd);
+    veldefensax1 = *velocidadpx;
+    veldefensay1 = *velocidadpy;
+    tempdefense2 = disparodefensivo(tO1,   vOx1,  vOy1, angulo2, d,  Ho, Hd);
+    veldefensax2 = *velocidadpx;
+    veldefensay2 = *velocidadpy;
+    tempdefense3 = disparodefensivo(tO1,   vOx1,  vOy1, angulo3, d,  Ho, Hd);
+    veldefensax3 = *velocidadpx;
+    veldefensay3 = *velocidadpy;
+    cout << "1. (angulo 45) tiempo: "<<tempdefense1<<" velocidad en x: "<<veldefensax1<<" velocidad en y: "<<veldefensay1<<endl;
+    cout << "2. (angulo 40) tiempo: "<<tempdefense2<<" velocidad en x: "<<veldefensax2<<" velocidad en y: "<<veldefensay2<<endl;
+    cout << "3. (angulo 35) tiempo: "<<tempdefense3<<" velocidad en x: "<<veldefensax3<<" velocidad en y: "<<veldefensay3<<endl;
+    cout << "si la salida es 0 es porque no colisiona."<<endl;
+
+    cout <<"Para disparo de 40 grados para parar la bala ofensiva: "<<endl;
+    tempdefense1 = disparodefensivo(tO1,   vOx1,  vOy1, angulo1, d,  Ho, Hd);
+    veldefensax1 = *velocidadpx;
+    veldefensay1 = *velocidadpy;
+    tempdefense2 = disparodefensivo(tO1,   vOx1,  vOy1, angulo2, d,  Ho, Hd);
+    veldefensax2 = *velocidadpx;
+    veldefensay2 = *velocidadpy;
+    tempdefense3 = disparodefensivo(tO1,   vOx1,  vOy1, angulo3, d,  Ho, Hd);
+    veldefensax3 = *velocidadpx;
+    veldefensay3 = *velocidadpy;
+    cout << "1. (angulo 45) tiempo: "<<tempdefense1<<" velocidad en x: "<<veldefensax1<<" velocidad en y: "<<veldefensay1<<endl;
+    cout << "2. (angulo 40) tiempo: "<<tempdefense2<<" velocidad en x: "<<veldefensax2<<" velocidad en y: "<<veldefensay2<<endl;
+    cout << "3. (angulo 35) tiempo: "<<tempdefense3<<" velocidad en x: "<<veldefensax3<<" velocidad en y: "<<veldefensay3<<endl;
+    cout << "si la salida es 0 es porque no colisiona."<<endl;
+
+    cout <<"Para disparo de 35 grados para parar la bala ofensiva: "<<endl;
+    tempdefense1 = disparodefensivo(tO1,   vOx1,  vOy1, angulo1, d,  Ho, Hd);
+    veldefensax1 = *velocidadpx;
+    veldefensay1 = *velocidadpy;
+    tempdefense2 = disparodefensivo(tO1,   vOx1,  vOy1, angulo2, d,  Ho, Hd);
+    veldefensax2 = *velocidadpx;
+    veldefensay2 = *velocidadpy;
+    tempdefense3 = disparodefensivo(tO1,   vOx1,  vOy1, angulo3, d,  Ho, Hd);
+    veldefensax3 = *velocidadpx;
+    veldefensay3 = *velocidadpy;
+    cout << "1. (angulo 45) tiempo: "<<tempdefense1<<" velocidad en x: "<<veldefensax1<<" velocidad en y: "<<veldefensay1<<endl;
+    cout << "2. (angulo 40) tiempo: "<<tempdefense2<<" velocidad en x: "<<veldefensax2<<" velocidad en y: "<<veldefensay2<<endl;
+    cout << "3. (angulo 35) tiempo: "<<tempdefense3<<" velocidad en x: "<<veldefensax3<<" velocidad en y: "<<veldefensay3<<endl;
+    cout << "si la salida es 0 es porque no colisiona."<<endl;
     return 0;
 }
 
@@ -131,6 +180,9 @@ int disparoO (int distancia, int angulo, int Ho, int Hd){
    return tiempo;
 }
 
+
+//entra la distancia y el angulo de disparo, la altura del cañon ofensivo y defensivo
+//retorna velocidad en 'x' y 'y' y y tiempo en el que llega al cañon ofensivo.
 int disparoD (int distancia, int angulo, int Ho, int Hd){
     float posOx, posOy;
     float pi = 3.1416, g = 9.81, dO = 0.05*distancia ;
@@ -162,9 +214,41 @@ int disparoD (int distancia, int angulo, int Ho, int Hd){
    return tiempo;
 }
 
-int disparodefensivo(int, int, int);
+//entra, tiempo, velocidad y angulo del disparo ofensivo,posicion de los dos cañones
+//sale, velocidad y angulo para impactar en el disparo ofensivo.
+int disparodefensivo(int temp, int velocidadx, int velocidady, int angulo, int distancia, int Ho, int Hd){
+    float posOx, posOy, posDx, posDy;
+    float pi = 3.1416, g = 9.81, dO = 0.05*distancia ;
+    float aO = angulo * pi/180;
+    int cero =0, vDx, vDy;
+    float tiempo=0;
+    bool flag = false;
+    for(int vD = 0; vD<=100; vD+=5){
+        vDx =vD*cos(aO);
+        vDy =vD*sin(aO);
+        for (float t = 2.5; t<=temp; t += 0.5){
+            posDx = vDx*t;
+            posDy = ( Hd + vDy*t) - (0.5*g*(t*t));
+            posOx = velocidadx*t;
+            posOy =( Ho + velocidady*t) - (0.5*g*(t*t));
+            if(sqrt(pow(posOx-posDy,2)+pow(posOy-posDy,2))<=dO){ // defensivo en x = d defensivo en y = h (altura)
+                 tiempo = t;
+                 velocidadpx = &vDx;
+                 velocidadpy = &vDy;
+                 flag = true;
+                 return tiempo;
+                 break;
+             }
+          }
+      }
 
-
+    if (flag == false){
+        tiempo = 0;
+        velocidadpx = &cero;
+        velocidadpy = &cero;
+    }
+    return tiempo;
+ }
 
 
 
